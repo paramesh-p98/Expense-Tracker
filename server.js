@@ -4,7 +4,6 @@ const dotenv = require('dotenv');
 const colors = require('colors');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
-const publicPath = path.join(__dirname, 'client', 'public');
 dotenv.config({ path: './config/config.env' });
 
 connectDB();
@@ -22,11 +21,9 @@ if (process.env.NODE_ENV === 'development') {
 app.use('/api/v1/transactions', transactions);
 
 if (process.env.NODE_ENV === 'PRODUCTION') {
-    app.use(express.static(publicPath));
+    app.use(express.static('client/public'));
 
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(publicPath, 'index.html'));
-    });
+    app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'public', 'index.html')));
 }
 
 const PORT = process.env.PORT || 5000;
