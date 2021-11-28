@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 const colors = require('colors');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
-const publicPath = path.join(__dirname, '..', 'public');
+const publicPath = path.join(__dirname, 'client', 'public');
 dotenv.config({ path: './config/config.env' });
 
 connectDB();
