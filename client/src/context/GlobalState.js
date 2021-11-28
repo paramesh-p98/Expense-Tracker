@@ -22,7 +22,6 @@ export const GlobalProvider = ({ children }) => {
         fetch('/api/v1/transactions')
             .then(response => response.json())
             .then(res => {
-                console.log(res);
                 dispatch({
                     type: 'GET_TRANSACTION',
                     payload: res.data
@@ -45,7 +44,6 @@ export const GlobalProvider = ({ children }) => {
         })
             .then(response => response.json())
             .then(res => {
-                console.log(res);
                 dispatch({
                     type: 'DELETE_TRANSACTION',
                     payload: id
@@ -72,7 +70,6 @@ export const GlobalProvider = ({ children }) => {
         })
             .then(response => response.json())
             .then(res => {
-                console.log(res, typeof (res.success));
                 if (res.data) {
                     dispatch({
                         type: 'ADD_TRANSACTION',
