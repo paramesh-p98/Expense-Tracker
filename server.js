@@ -20,11 +20,12 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use('/api/v1/transactions', transactions);
 
+//serve static assets if in production
+
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/build'));
+    app.use(express.static('client/build'));   //Set static folder
 
     app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')));
-    console.log(path.resolve(__dirname, 'client', 'build', 'index.html'));
 }
 
 const PORT = process.env.PORT || 5000;
